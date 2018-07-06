@@ -7,86 +7,6 @@ namespace CustomListTestingv2
     [TestClass]
     public class CustomListTests
     {
-        //[TestMethod]
-        //public void Indexer_Test0()
-        //{
-        //    // Arrange
-        //    CustomList<int> myList = new CustomList<int>();
-        //    int testValue1 = 100;
-        //    int expected = 100;
-        //    int actual;
-
-        //    // Act
-        //    myList[0] = testValue1;
-        //    actual = myList[0];
-
-        //    // Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //[TestMethod]
-        //public void Indexer_Test1()
-        //{
-        //    // Arrange
-        //    CustomList<int> myList = new CustomList<int>();
-        //    int testValue1 = 50;
-        //    int expected = 50;
-        //    int actual;
-
-        //    // Act
-        //    myList[1] = testValue1;
-        //    actual = myList[1];
-
-        //    // Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //[TestMethod]
-        //public void Indexer_Test2()
-        //{
-        //    // Arrange
-        //    CustomList<int> myList = new CustomList<int>();
-        //    int testValue1 = 75;
-        //    int expected = 75;
-        //    int actual;
-
-        //    // Act
-        //    myList[2] = testValue1;
-        //    actual = myList[2];
-
-        //    // Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //[TestMethod]
-        //public void Indexer_Test3()
-        //{
-        //    // Arrange
-        //    CustomList<int> myList = new CustomList<int>();
-        //    int testValue1 = 15;
-        //    int expected = 15;
-        //    int actual;
-
-        //    // Act
-        //    myList[3] = testValue1;
-        //    actual = myList[3];
-
-        //    // Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
-        //[TestMethod]
-        //public void Indexer_Test4()
-        //{
-        //    // Arrange
-        //    CustomList<int> myList = new CustomList<int>();
-        //    int testValue1 = 13;
-        //    int expected = 13;
-        //    int actual;
-
-        //    // Act
-        //    myList[4] = testValue1;
-        //    actual = myList[4];
-
-        //    // Assert
-        //    Assert.AreEqual(expected, actual);
-        //}
         [TestMethod]
         public void FiveIndex_Add()
         {
@@ -659,7 +579,7 @@ namespace CustomListTestingv2
             expected.Add(value6);
 
             // Act
-            actual = myList3.Zipper(myList1,myList2);
+            actual = myList1.Zipper(myList2);
             // Assert
             for(int i = 0; i < actual.Count(); i++)
             {
@@ -674,16 +594,14 @@ namespace CustomListTestingv2
             CustomList<int> myList1 = new CustomList<int>();
             CustomList<int> myList2 = new CustomList<int>();
             CustomList<int> myList3 = new CustomList<int>();
-            CustomList<int> myList4 = new CustomList<int>();
-            CustomList<int> myList5 = new CustomList<int>();
             CustomList<int> actual;
             CustomList<int> expected = new CustomList<int>();
             int value1 = 10;
             int value2 = 20;
             int value3 = 30;
             int value4 = 40;
-            int value5 = 40;
-            int value6 = 20;
+            int value5 = 50;
+            int value6 = 60;
             myList1.Add(value1);
             myList1.Add(value2);
             myList1.Add(value3);
@@ -694,18 +612,20 @@ namespace CustomListTestingv2
             myList3.Add(value5);
             myList3.Add(value6);
             expected.Add(value1);
-            expected.Add(value1);
             expected.Add(value4);
+            expected.Add(value4);
+            expected.Add(value5);
             expected.Add(value2);
-            expected.Add(value2);
+            expected.Add(value6);
             expected.Add(value5);
             expected.Add(value3);
             expected.Add(value6);
 
 
+            actual = myList1.Zipper(myList2);
+            actual = actual.Zipper(myList3);
+
             // Act
-            myList4 = myList3.Zipper(myList1, myList2);
-            actual = myList5.Zipper(myList1, myList4);
             // Assert
             for (int i = 0; i < expected.Count(); i++)
             {
@@ -719,7 +639,6 @@ namespace CustomListTestingv2
             // Arrange
             CustomList<int> myList1 = new CustomList<int>();
             CustomList<int> myList2 = new CustomList<int>();
-            CustomList<int> myList3 = new CustomList<int>();
             CustomList<int> actual;
             CustomList<int> expected = new CustomList<int>();
             int value1 = 10;
@@ -735,12 +654,50 @@ namespace CustomListTestingv2
             expected.Add(value1);
             expected.Add(value4);
             expected.Add(value2);
-            //expected.Add(value5);
+            expected.Add(value5);
             expected.Add(value3);
            
 
             // Act
-            actual = myList3.Zipper(myList1, myList2);
+            actual = myList1.Zipper(myList2);
+            // Assert
+            for (int i = 0; i < actual.Count(); i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+
+            }
+        }
+        [TestMethod]
+        public void Zipper_TwoLists6Diff()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            CustomList<int> myList2 = new CustomList<int>();
+            CustomList<int> actual;
+            CustomList<int> expected = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int value5 = 50;
+            int value6 = 60;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList2.Add(value3);
+            myList2.Add(value4);
+            myList2.Add(value5);
+            myList2.Add(value6);
+            expected.Add(value1);
+            expected.Add(value3);
+            expected.Add(value2);
+            expected.Add(value4);
+            expected.Add(value5);
+            expected.Add(value6);
+
+
+
+            // Act
+            actual = myList1.Zipper(myList2);
             // Assert
             for (int i = 0; i < actual.Count(); i++)
             {

@@ -112,28 +112,44 @@ namespace CustomListProject
             return arrLength;
         }
 
-        public CustomList<T> Zipper(CustomList<T> l1, CustomList<T> l2)
+        public CustomList<T> Zipper(CustomList<T> l1)
         {
-            CustomList<T> newArr = new CustomList<T>();
+            CustomList<T> newArry = new CustomList<T>();
             int i = 0;
-            while(i < l2.arrLength || i < l1.arrLength)
+            if (arrLength > l1.arrLength)
             {
-                if (i == l2.arrLength && i < l1.arrLength)
+                while (i < arrLength)
                 {
-                    newArr.Add(l1[i]);
+                    if (i < l1.arrLength)
+                    {
+                        newArry.Add(myArr[i]);
+                        newArry.Add(l1[i]);
+                    }
+                    else
+                    {
+                        newArry.Add(myArr[i]);
+                    }
+                    i++;
                 }
-                else if (i == l1.arrLength && i < l2.arrLength)
-                {
-                    newArr.Add(l2[i]);
-                }
-                else
-                {
-                    newArr.Add(l1[i]);
-                    newArr.Add(l2[i]);
-                }
-                i++;
             }
-            return newArr;
+            else
+            {
+                while (i < l1.arrLength)
+                {
+                    if (i < arrLength)
+                    {
+                        newArry.Add(myArr[i]);
+                        newArry.Add(l1[i]);
+                    }
+                    else
+                    {
+                        newArry.Add(l1[i]);
+                    }
+                    i++;
+                }
+            }
+           
+            return newArry;
         }
     }
 }
