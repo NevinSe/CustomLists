@@ -492,7 +492,6 @@ namespace CustomListTestingv2
             // Arrange
             CustomList<int> myList1 = new CustomList<int>();
             CustomList<int> myList2 = new CustomList<int>();
-            CustomList<int> myList3 = new CustomList<int>();
             CustomList<int> actual;
             CustomList<int> expected = new CustomList<int>();
             int value1 = 10;
@@ -515,6 +514,239 @@ namespace CustomListTestingv2
             // Assert
             Assert.ReferenceEquals(expected, actual);
 
+        }
+
+        [TestMethod]
+        public void SubtractionOverloading_ThreeLists6()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            CustomList<int> myList2 = new CustomList<int>();
+            CustomList<int> myList3 = new CustomList<int>();
+            CustomList<int> actual;
+            CustomList<int> expected = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int value5 = 40;
+            int value6 = 20;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList1.Add(value3);
+            myList1.Add(value4);
+            myList1.Add(value5);
+            myList1.Add(value6);
+            myList2.Add(value1);
+            myList2.Add(value2);
+            myList3.Add(value3);
+            myList3.Add(value4);
+            expected.Add(value5);
+            expected.Add(value6);
+
+            // Act
+            actual = myList1 - myList2;
+            actual -= myList3;
+            // Assert
+            Assert.ReferenceEquals(expected, actual);
+
+        }
+        [TestMethod]
+        public void Count_OneList_6()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int value5 = 40;
+            int value6 = 20;
+            int expected = 6;
+            int actual;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList1.Add(value3);
+            myList1.Add(value4);
+            myList1.Add(value5);
+            myList1.Add(value6);
+
+
+            // Act
+            actual = myList1.Count();
+            // Assert
+            Assert.ReferenceEquals(expected, actual);
+
+        }
+        [TestMethod]
+        public void Count_OneList_4()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int expected = 4;
+            int actual;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList1.Add(value3);
+            myList1.Add(value4);
+
+
+            // Act
+            actual = myList1.Count();
+            // Assert
+            Assert.ReferenceEquals(expected, actual);
+
+        }
+        [TestMethod]
+        public void Count_OneList_7()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int value5 = 40;
+            int value6 = 20;
+            int value7 = 20;
+            int expected = 7;
+            int actual;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList1.Add(value3);
+            myList1.Add(value4);
+            myList1.Add(value5);
+            myList1.Add(value6);
+            myList1.Add(value7);
+
+
+            // Act
+            actual = myList1.Count();
+            // Assert
+            Assert.ReferenceEquals(expected, actual);
+
+        }
+        [TestMethod]
+        public void Zipper_TwoLists6()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            CustomList<int> myList2 = new CustomList<int>();
+            CustomList<int> myList3 = new CustomList<int>();
+            CustomList<int> actual;
+            CustomList<int> expected = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int value5 = 40;
+            int value6 = 20;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList1.Add(value3);
+            myList2.Add(value4);
+            myList2.Add(value5);
+            myList2.Add(value6);
+            expected.Add(value1);
+            expected.Add(value4);
+            expected.Add(value2);
+            expected.Add(value5);
+            expected.Add(value3);
+            expected.Add(value6);
+
+            // Act
+            actual = myList3.Zipper(myList1,myList2);
+            // Assert
+            for(int i = 0; i < actual.Count(); i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+
+            }
+        }
+        [TestMethod]
+        public void Zipper_ThreeLists6()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            CustomList<int> myList2 = new CustomList<int>();
+            CustomList<int> myList3 = new CustomList<int>();
+            CustomList<int> myList4 = new CustomList<int>();
+            CustomList<int> myList5 = new CustomList<int>();
+            CustomList<int> actual;
+            CustomList<int> expected = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int value5 = 40;
+            int value6 = 20;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList1.Add(value3);
+            myList2.Add(value4);
+            myList2.Add(value5);
+            myList2.Add(value6);
+            myList3.Add(value4);
+            myList3.Add(value5);
+            myList3.Add(value6);
+            expected.Add(value1);
+            expected.Add(value1);
+            expected.Add(value4);
+            expected.Add(value2);
+            expected.Add(value2);
+            expected.Add(value5);
+            expected.Add(value3);
+            expected.Add(value6);
+
+
+            // Act
+            myList4 = myList3.Zipper(myList1, myList2);
+            actual = myList5.Zipper(myList1, myList4);
+            // Assert
+            for (int i = 0; i < expected.Count(); i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+
+            }
+        }
+        [TestMethod]
+        public void Zipper_TwoLists5()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            CustomList<int> myList2 = new CustomList<int>();
+            CustomList<int> myList3 = new CustomList<int>();
+            CustomList<int> actual;
+            CustomList<int> expected = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int value5 = 40;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList1.Add(value3);
+            myList2.Add(value4);
+            myList2.Add(value5);
+            expected.Add(value1);
+            expected.Add(value4);
+            expected.Add(value2);
+            //expected.Add(value5);
+            expected.Add(value3);
+           
+
+            // Act
+            actual = myList3.Zipper(myList1, myList2);
+            // Assert
+            for (int i = 0; i < actual.Count(); i++)
+            {
+                Assert.AreEqual(expected[i], actual[i]);
+
+            }
         }
     }
 }

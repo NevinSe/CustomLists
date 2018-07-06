@@ -107,5 +107,33 @@ namespace CustomListProject
            }
             return newArr;
         }
+        public int Count()
+        {
+            return arrLength;
+        }
+
+        public CustomList<T> Zipper(CustomList<T> l1, CustomList<T> l2)
+        {
+            CustomList<T> newArr = new CustomList<T>();
+            int i = 0;
+            while(i < l2.arrLength || i < l1.arrLength)
+            {
+                if (i == l2.arrLength && i < l1.arrLength)
+                {
+                    newArr.Add(l1[i]);
+                }
+                else if (i == l1.arrLength && i < l2.arrLength)
+                {
+                    newArr.Add(l2[i]);
+                }
+                else
+                {
+                    newArr.Add(l1[i]);
+                    newArr.Add(l2[i]);
+                }
+                i++;
+            }
+            return newArr;
+        }
     }
 }
