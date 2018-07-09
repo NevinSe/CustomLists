@@ -148,7 +148,7 @@ namespace CustomListProject
             return newArry;
         }
 
-        public IEnumerator GetEnumerator()
+        public  IEnumerator GetEnumerator()
         {
             for (int i = 0; i < Count; i++)
             {

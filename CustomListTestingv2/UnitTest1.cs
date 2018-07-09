@@ -705,5 +705,51 @@ namespace CustomListTestingv2
 
             }
         }
+        [TestMethod]
+        public void FiveIndex_Iteration()
+        {
+            // Arrange
+            CustomList<int> myList = new CustomList<int>() { 3, 4, 5, 6, 7 };
+            int expected = 25;
+            int actual = 0;
+            // Act
+            foreach (int i in myList)
+            {
+                actual += i;
+            }
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void SevenIndex_Iteration()
+        {
+            // Arrange
+            CustomList<int> myList = new CustomList<int>() { 3, 4, 5, 6, 7, 8 ,9 };
+            int expected = 42;
+            int actual = 0;
+            // Act
+            foreach (int i in myList)
+            {
+                actual += i;
+            }
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void EightIndex_Iteration()
+        {
+            // Arrange
+            CustomList<int> myList = new CustomList<int>() { 3, 4, 5, 6, 7, 8, 9 };
+            myList.Add(10);
+            int expected = 52;
+            int actual = 0;
+            // Act
+            foreach (int i in myList)
+            {
+                actual += i;
+            }
+            // Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
