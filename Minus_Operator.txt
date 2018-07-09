@@ -48,5 +48,9 @@ Example:
             actual = myList1 - myList2;
             // Assert
             Assert.ReferenceEquals(expected, actual);
+		//myList1 = 10, 20, 30, 40
+		//mylist2 = 40, 20
+		//actual = 10, 30
+		//expected = 10, 30
 
         }
