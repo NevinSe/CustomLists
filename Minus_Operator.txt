@@ -1,0 +1,52 @@
+Custom List
+	Overloading Minus Operator
+
+Syntax
+	public static CustomList<T> operator -(
+
+		CustomList<T> l1, 
+		CustomList<T> l2
+		)
+	
+parameters
+	l1:
+		Type: CustomList<T>
+		The Collection of T to be compared to the Second CustomList<T>.
+	l2:
+		Type: CustomList<T>
+		The Collection of T to be removed from the first CustomList<T>.
+return value
+	
+		Type: CustomList<T>
+		The return of a new Collection of T, with no instances of the second CustomList<T> from the first CustomList<T>.
+
+Example:
+
+	 public void SubtractionOverloading_TwoLists6()
+        {
+            // Arrange
+            CustomList<int> myList1 = new CustomList<int>();
+            CustomList<int> myList2 = new CustomList<int>();
+            CustomList<int> actual;
+            CustomList<int> expected = new CustomList<int>();
+            int value1 = 10;
+            int value2 = 20;
+            int value3 = 30;
+            int value4 = 40;
+            int value5 = 40;
+            int value6 = 20;
+            myList1.Add(value1);
+            myList1.Add(value2);
+            myList1.Add(value3);
+            myList1.Add(value4);
+            myList2.Add(value5);
+            myList2.Add(value6);
+            expected.Add(value1);
+            expected.Add(value3);
+
+            // Act
+            actual = myList1 - myList2;
+            // Assert
+            Assert.ReferenceEquals(expected, actual);
+
+        }

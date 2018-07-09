@@ -493,7 +493,7 @@ namespace CustomListTestingv2
 
 
             // Act
-            actual = myList1.Count();
+            actual = myList1.Count;
             // Assert
             Assert.ReferenceEquals(expected, actual);
 
@@ -516,7 +516,7 @@ namespace CustomListTestingv2
 
 
             // Act
-            actual = myList1.Count();
+            actual = myList1.Count;
             // Assert
             Assert.ReferenceEquals(expected, actual);
 
@@ -545,7 +545,7 @@ namespace CustomListTestingv2
 
 
             // Act
-            actual = myList1.Count();
+            actual = myList1.Count;
             // Assert
             Assert.ReferenceEquals(expected, actual);
 
@@ -581,7 +581,7 @@ namespace CustomListTestingv2
             // Act
             actual = myList1.Zipper(myList2);
             // Assert
-            for(int i = 0; i < actual.Count(); i++)
+            for(int i = 0; i < actual.Count; i++)
             {
                 Assert.AreEqual(expected[i], actual[i]);
 
@@ -627,7 +627,7 @@ namespace CustomListTestingv2
 
             // Act
             // Assert
-            for (int i = 0; i < expected.Count(); i++)
+            for (int i = 0; i < expected.Count; i++)
             {
                 Assert.AreEqual(expected[i], actual[i]);
 
@@ -661,7 +661,7 @@ namespace CustomListTestingv2
             // Act
             actual = myList1.Zipper(myList2);
             // Assert
-            for (int i = 0; i < actual.Count(); i++)
+            for (int i = 0; i < actual.Count; i++)
             {
                 Assert.AreEqual(expected[i], actual[i]);
 
@@ -699,7 +699,7 @@ namespace CustomListTestingv2
             // Act
             actual = myList1.Zipper(myList2);
             // Assert
-            for (int i = 0; i < actual.Count(); i++)
+            for (int i = 0; i < actual.Count; i++)
             {
                 Assert.AreEqual(expected[i], actual[i]);
 

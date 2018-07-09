@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace CustomListProject
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
-
         public CustomList<T> customList;
-        private T[] myArr;
-        public int arrLength;
-        private CustomList<T> c1;
+        private T[] myArr { get; set; }
+        public int Count { get; set; }
         public T this[int i]
         {
             get { return myArr[i]; }
@@ -20,40 +19,41 @@ namespace CustomListProject
         }
         public CustomList()
         {
-            myArr = new T[0];
-            arrLength = 0;
+            Count = 0;
+            myArr = new T[Count];
+           
         }
 
         public void Add(T item)
         {
-            if (arrLength == 0)
+            if (Count == 0)
             {
-                arrLength++;
-                T[] newArry = new T[arrLength];
-                newArry[arrLength - 1] = item;
+                Count++;
+                T[] newArry = new T[Count];
+                newArry[Count - 1] = item;
                 myArr = newArry;
             }
             else
             {
-                arrLength++;
-                T[] newArry = new T[arrLength];
-                for (int i = 0; i < arrLength - 1; i++)
+                Count++;
+                T[] newArry = new T[Count];
+                for (int i = 0; i < Count - 1; i++)
                 {
                     newArry[i] = myArr[i];
                 }
-                newArry[arrLength - 1] = item;
+                newArry[Count - 1] = item;
                 myArr = newArry;
             }
         }
 
         public void Remove(T item)
         {
-            T[] newArr = new T[arrLength - 1];
+            T[] newArr = new T[Count - 1];
 
             int i = 0;
             int j = 0;
 
-            while (i < arrLength)
+            while (i < Count)
             {
                 if (!myArr[i].Equals(item))
                 {
@@ -62,16 +62,16 @@ namespace CustomListProject
                 }
                 i++;
             }
-            arrLength--;
-            myArr = new T[arrLength];
+            Count--;
+            myArr = new T[Count];
             myArr = newArr;
         }
         public override string ToString()
         {
             string listString = "";
-            for (int i = 0; i < arrLength; i++)
+            for (int i = 0; i < Count; i++)
             {
-                if (i != arrLength - 1)
+                if (i != Count - 1)
                 {
                     listString += string.Concat(myArr[i].ToString(), ", ");
                 }
@@ -86,7 +86,7 @@ namespace CustomListProject
 
         public static CustomList<T> operator +(CustomList<T> l1, CustomList<T> l2)
         {
-            for(int i = 0; i < l2.arrLength; i++)
+            for(int i = 0; i < l2.Count; i++)
             {
                 l1.Add(l2[i]);
             }
@@ -95,9 +95,9 @@ namespace CustomListProject
         public static CustomList<T> operator -(CustomList<T> l1, CustomList<T> l2)
         {
            CustomList<T> newArr = new CustomList<T>();
-           for(int i = 0; i < l1.arrLength; i++)
+           for(int i = 0; i < l1.Count; i++)
            {
-                for(int j = 0; j < l2.arrLength; j++)
+                for(int j = 0; j < l2.Count; j++)
                 {
                     if (!l1[i].Equals(l2[j]))
                     {
@@ -107,20 +107,16 @@ namespace CustomListProject
            }
             return newArr;
         }
-        public int Count()
-        {
-            return arrLength;
-        }
 
         public CustomList<T> Zipper(CustomList<T> l1)
         {
             CustomList<T> newArry = new CustomList<T>();
             int i = 0;
-            if (arrLength > l1.arrLength)
+            if (Count > l1.Count)
             {
-                while (i < arrLength)
+                while (i < Count)
                 {
-                    if (i < l1.arrLength)
+                    if (i < l1.Count)
                     {
                         newArry.Add(myArr[i]);
                         newArry.Add(l1[i]);
@@ -134,9 +130,9 @@ namespace CustomListProject
             }
             else
             {
-                while (i < l1.arrLength)
+                while (i < l1.Count)
                 {
-                    if (i < arrLength)
+                    if (i < Count)
                     {
                         newArry.Add(myArr[i]);
                         newArry.Add(l1[i]);
@@ -150,6 +146,14 @@ namespace CustomListProject
             }
            
             return newArry;
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return myArr[i];
+            }
         }
     }
 }
